@@ -35,11 +35,15 @@ android {
     buildFeatures {
         dataBinding true
     }
+
+
 }
+
+
 
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    def lifecycle_version = "2.5.0-alpha05"
+    def lifecycle_version = "2.4.1"
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     // LiveData
