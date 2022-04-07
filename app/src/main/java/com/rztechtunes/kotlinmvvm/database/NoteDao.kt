@@ -17,7 +17,7 @@ interface NoteDao {
     suspend fun deleteNote(noteBookPojo: NoteBookPojo)
 
 
-    @Query("select * from note_tbl")
+    @Query("select * from note_tbl order by id desc")
     fun getAllNote():LiveData<List<NoteBookPojo>>
 
 }

@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.rztechtunes.kotlinmvvm.adapter.NoteAdapter
 import com.rztechtunes.kotlinmvvm.database.NoteDB
 import com.rztechtunes.kotlinmvvm.database.NoteDao
 import com.rztechtunes.kotlinmvvm.databinding.FragmentNoteBinding
@@ -40,12 +42,19 @@ class NoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        noteViewmodel.note.observe(viewLifecycleOwner, Observer {
+        initRecyclerView()
+    }
 
-            binding.noteTV.text = it.toString()
+    private fun showData() {
+        noteViewmodel.note.observe(viewLifecycleOwner, Observer {
+            binding.recyclerview.adapter = NoteAdapter(it)
         })
     }
 
-
+    private fun initRecyclerView()
+    {
+        binding.recyclerview.layoutManager = LinearLayoutManager(context)
+        showData()
+    }
 
 }
